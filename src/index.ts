@@ -14,7 +14,11 @@ const app: express.Application = express();
 const httpServer = createServer(app);
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "*",
+    origin: [
+      process.env.CLIENT_URL!,
+      "http://localhost:3001",
+      "http://localhost:3000",
+    ],
     credentials: true,
   })
 );
