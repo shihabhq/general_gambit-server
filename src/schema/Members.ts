@@ -8,6 +8,7 @@ export interface IMember extends Document {
   isSold: boolean;
   soldTo: Types.ObjectId | ITeam | null;
   isStar: boolean;
+  position: "goalkeeper" | "striker" | "midfielder" | "defender";
   number: number;
   gender: "male" | "female";
 }
@@ -20,6 +21,11 @@ const MaleMemberSchema = new Schema<IMember>({
   isSold: { type: Boolean, default: false },
   soldTo: { type: Schema.Types.ObjectId, ref: "Team", default: null },
   isStar: { type: Boolean, default: false },
+  position: {
+    type: String,
+    enum: ["goalkeeper", "striker", "midfielder", "defender"],
+    required: true,
+  },
   gender: { type: String, default: "male" },
 });
 
@@ -30,6 +36,11 @@ const FemaleMemberSchema = new Schema<IMember>({
   isSold: { type: Boolean, default: false },
   soldTo: { type: Schema.Types.ObjectId, ref: "Team", default: null },
   isStar: { type: Boolean, default: false },
+  position: {
+    type: String,
+    enum: ["goalkeeper", "striker", "midfielder", "defender"],
+    required: true,
+  },
   gender: { type: String, default: "female" },
 });
 
