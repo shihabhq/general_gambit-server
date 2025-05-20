@@ -33,6 +33,7 @@ const FemaleMemberSchema = new Schema<IMember>({
   name: { type: String, required: true },
   image: { type: String, required: true },
   price: { type: Number, default: null },
+  number: { type: Number, required: true },
   isSold: { type: Boolean, default: false },
   soldTo: { type: Schema.Types.ObjectId, ref: "Team", default: null },
   isStar: { type: Boolean, default: false },
